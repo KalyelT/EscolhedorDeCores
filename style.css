@@ -15,4 +15,17 @@ div.conteiner {
     width: 100px;
     height: 100px;
     background-color: aqua;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 600;
+    user-select: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: transform 150ms ease, box-shadow 150ms ease, background-color 200ms ease;
+}
+.quadrado:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
