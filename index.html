@@ -8,15 +8,16 @@
 </head>
 <body>
     <h1>Escolhedor de Cores</h1>
-    <div id="cores">
-        <button id="botao">Gere uma cor aleatoria</button>
-        <div class="conteiner">
-        <div class="quadrado"></div>
-        <div class="quadrado"></div>
-        <div class="quadrado"></div>
-        <div class="quadrado"></div>
-        <div class="quadrado"></div>
-    </div>
+    <main id="cores" aria-label="Gerador de cores">
+        <button id="botao" type="button">Gerar cores aleatórias</button>
+        <div class="conteiner" role="list">
+            <div class="quadrado" role="button" tabindex="0"></div>
+            <div class="quadrado" role="button" tabindex="0"></div>
+            <div class="quadrado" role="button" tabindex="0"></div>
+            <div class="quadrado" role="button" tabindex="0"></div>
+            <div class="quadrado" role="button" tabindex="0"></div>
+        </div>
+    </main>
 
     <script src="script.js"></script>
 </body>

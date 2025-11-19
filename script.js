@@ -1,8 +1,7 @@
 // Gera um hex aleatório
 function randomHex() {
-    return '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16).padStart(6, '0');
+    return '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16).padStart(6, '0').toUpperCase();
 }
-
 
 function textColorForBackground(hex) {
     const r = parseInt(hex.slice(1,3),16);
@@ -14,7 +13,7 @@ function textColorForBackground(hex) {
 
 document.addEventListener('DOMContentLoaded', () => {
     const btn = document.getElementById('botao');
-    const squares = document.querySelectorAll('.quadrado');
+    const squares = Array.from(document.querySelectorAll('.quadrado'));
 
     function applyRandomColors() {
         squares.forEach(sq => {
@@ -27,22 +26,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     btn.addEventListener('click', applyRandomColors);
 
-    // copia hex ao clicar no quadrado
+    // copiar hex ao clicar ou pressionar Enter/Espaço
     squares.forEach(sq => {
-        sq.addEventListener('click', async () => {
+        const copy = async () => {
             const txt = sq.textContent.trim();
             try {
                 await navigator.clipboard.writeText(txt);
-                // feedback rápido
                 const prev = sq.textContent;
                 sq.textContent = 'Copiado!';
                 setTimeout(() => sq.textContent = prev, 900);
-            } catch {
-                // não bloqueia se não suportar clipboard
+            } catch (err) {
+                console.error('Clipboard error', err);
+            }
+        };
+
+        sq.addEventListener('click', copy);
+        sq.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                copy();
             }
         });
     });
 
-    // aplicar cores iniciais
     applyRandomColors();
 });

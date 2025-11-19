@@ -1,19 +1,33 @@
+:root{
+    --bg: #f4f7fb;
+    --gap: 12px;
+    --square-size: 100px;
+    --radius: 6px;
+}
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     min-height: 100vh;
+    background-color: var(--bg);
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color: #111;
 }
 
+/* container */
 div.conteiner {
     display: flex;
-    gap: 10px;
+    gap: var(--gap);
+    margin-top: 16px;
+    flex-wrap: wrap;
 }
 
 .quadrado {
-    width: 100px;
-    height: 100px;
+    width: var(--square-size);
+    height: var(--square-size);
     background-color: aqua;
     display: flex;
     align-items: center;
@@ -22,10 +36,27 @@ div.conteiner {
     font-weight: 600;
     user-select: none;
     cursor: pointer;
-    border-radius: 6px;
+    border-radius: var(--radius);
     transition: transform 150ms ease, box-shadow 150ms ease, background-color 200ms ease;
+    text-align: center;
 }
-.quadrado:hover {
+.quadrado:hover,
+.quadrado:focus {
     transform: translateY(-4px);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    outline: none;
 }
+.quadrado:focus-visible {
+    box-shadow: 0 0 0 3px rgba(0,123,255,0.18);
+}
+
+/* botão */
+#botao{
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.06);
+    background: white;
+    cursor: pointer;
+    font-weight: 600;
+}
+#botao:active { transform: translateY(1px); }
